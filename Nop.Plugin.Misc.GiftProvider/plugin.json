@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Misc",
+  "FriendlyName": "Gift Provider",
+  "SystemName": "Misc.GiftProvider",
+  "Version": "1.00",
+  "SupportedVersions": [ "4.50" ],
+  "Author": "Scott Howell",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Misc.GiftProvider.dll",
+  "Description": "This plugin allows you to configure gifts"
+}
