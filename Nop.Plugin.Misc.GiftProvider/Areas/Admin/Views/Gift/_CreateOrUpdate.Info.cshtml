@@ -5,13 +5,13 @@
 <script>
     $(document).ready(function() {
         $("#@Html.IdFor(model => model.GiftTypeId)").change(toggleGiftType);
-        $("#@Html.IdFor(model => model.UsePercentage)").click(toggleUsePercentage);
+        //$("#@Html.IdFor(model => model.UsePercentage)").click(toggleUsePercentage);
         $("#@Html.IdFor(model => model.RequiresCouponCode)").click(toggleRequiresCouponCode);
         $("#@Html.IdFor(model => model.GiftLimitationId)").change(toggleLimitation);
 
         toggleGiftType();
         toggleLimitation();
-        toggleUsePercentage();
+        //toggleUsePercentage();
         toggleRequiresCouponCode();
     });
 
@@ -54,17 +54,17 @@
     }
     }
 
-    function toggleUsePercentage() {
-        if ($('#@Html.IdFor(model => model.UsePercentage)').is(':checked')) {
-            $('#pnlGiftPercentage').showElement();
-            $('#pnlGiftAmount').hideElement();
-            $('#pnlMaximumGiftAmount').showElement();
-        } else {
-            $('#pnlGiftPercentage').hideElement();
-            $('#pnlGiftAmount').showElement();
-            $('#pnlMaximumGiftAmount').hideElement();
-        }
-    }
+    //function toggleUsePercentage() {
+    //    if ($('#@Html.IdFor(model => model.UsePercentage)').is(':checked')) {
+    //        $('#pnlGiftPercentage').showElement();
+    //        $('#pnlGiftAmount').hideElement();
+    //        $('#pnlMaximumGiftAmount').showElement();
+    //    } else {
+    //        $('#pnlGiftPercentage').hideElement();
+    //        $('#pnlGiftAmount').showElement();
+    //        $('#pnlMaximumGiftAmount').hideElement();
+    //    }
+    //}
 
     function toggleRequiresCouponCode() {
         if ($('#@Html.IdFor(model => model.RequiresCouponCode)').is(':checked')) {
@@ -112,7 +112,7 @@
             <span asp-validation-for="AppliedToSubCategories"></span>
         </div>
     </div>
-    <div class="form-group row">
+@*    <div class="form-group row">
         <div class="col-md-3">
             <nop-label asp-for="UsePercentage" />
         </div>
@@ -140,8 +140,8 @@
                 <span asp-validation-for="MaximumGiftAmount"></span>
             </div>
         </div>
-    </nop-nested-setting>
-    <div class="form-group row" id="pnlGiftAmount">
+    </nop-nested-setting>*@
+@*    <div class="form-group row" id="pnlGiftAmount">
         <div class="col-md-3">
             <nop-label asp-for="GiftAmount" />
         </div>
@@ -150,7 +150,7 @@
             <span asp-validation-for="GiftAmount"></span>
         </div>
     </div>
-    <div class="form-group row">
+*@    <div class="form-group row">
         <div class="col-md-3">
             <nop-label asp-for="RequiresCouponCode" />
         </div>
