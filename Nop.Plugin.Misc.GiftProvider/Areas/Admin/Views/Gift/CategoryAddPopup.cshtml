@@ -1,10 +1,10 @@
-﻿@model AddCategoryToDiscountSearchModel
+﻿@model AddCategoryToGiftSearchModel
 
 @{
     Layout = "_AdminPopupLayout";
 
     //page title
-    ViewBag.PageTitle = T("Admin.Promotions.Discounts.AppliedToCategories.AddNew").Text;
+    ViewBag.PageTitle = T("Admin.Promotions.Gifts.AppliedToCategories.AddNew").Text;
 }
 
 
@@ -18,13 +18,13 @@
 }
 else
 {
-    <form asp-controller="Discount" asp-action="CategoryAddPopup"
-          asp-route-discountId="@Context.Request.Query["discountId"]"
+    <form asp-controller="Gift" asp-action="CategoryAddPopup"
+          asp-route-giftId="@Context.Request.Query["giftId"]"
           asp-route-btnId="@Context.Request.Query["btnId"]"
           asp-route-formId="@Context.Request.Query["formId"]">
         <div class="content-header clearfix">
             <h1 class="float-left">
-                @T("Admin.Promotions.Discounts.AppliedToCategories.AddNew")
+                @T("Admin.Promotions.Gifts.AppliedToCategories.AddNew")
             </h1>
             <div class="float-right">
                 &nbsp;
@@ -62,7 +62,7 @@ else
                                     @await Html.PartialAsync("Table", new DataTablesModel
                                     {
                                         Name = "categories-grid",
-                                        UrlRead = new DataUrl("CategoryAddPopupList", "Discount", null),
+                                        UrlRead = new DataUrl("CategoryAddPopupList", "Gift", null),
                                         SearchButtonId = "search-categories",
                                         Length = Model.PageSize,
                                         LengthMenu = Model.AvailablePageSizes,
@@ -75,7 +75,7 @@ else
                                             new ColumnProperty(nameof(CategoryModel.Id))
                                             {
                                                 IsMasterCheckBox = true,
-                                                Render = new RenderCheckBox(nameof(AddCategoryToDiscountModel.SelectedCategoryIds)),
+                                                Render = new RenderCheckBox(nameof(AddCategoryToGiftModel.SelectedCategoryIds)),
                                                 ClassName =  NopColumnClassDefaults.CenterAll,
                                                 Width = "50"
                                             },

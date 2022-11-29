@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Nop.Core.Infrastructure;
+using Nop.Plugin.Misc.GiftProvider.Areas.Admin.Factories;
 using Nop.Plugin.Misc.GiftProvider.Services;
 
 namespace Nop.Plugin.Misc.GiftProvider.Infrastructure;
@@ -18,12 +20,17 @@ public class NopStartup : INopStartup
     /// <param name="configuration">Configuration of the application</param>
     public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
     {
+        services.Configure<RazorViewEngineOptions>(options =>
+        {
+            options.ViewLocationExpanders.Add(new ViewLocationExpander());
+        });
+
         //services
         services.AddTransient<IGiftService, GiftService>();
         services.AddTransient<ICategoryGiftService, CategoryGiftService>();
         services.AddTransient<IManufacturerGiftService, ManufacturerGiftService>();
         services.AddTransient<IProductGiftService, ProductGiftService>();
-
+        services.AddTransient<IGiftModelFactory, GiftModelFactory>();
 
         //plugin managers
         services.AddTransient<IGiftPluginManager, GiftPluginManager>();

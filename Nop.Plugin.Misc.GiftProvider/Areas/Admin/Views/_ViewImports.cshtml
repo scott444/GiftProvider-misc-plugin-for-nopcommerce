@@ -2,6 +2,7 @@
 
 @inject IGenericAttributeService genericAttributeService
 @inject IWorkContext workContext
+@inject INopHtmlHelper NopHtml
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper *, Nop.Web.Framework
@@ -23,7 +24,6 @@
 @using Nop.Web.Areas.Admin.Models.Common
 @using Nop.Web.Areas.Admin.Models.Customers
 @using Nop.Web.Areas.Admin.Models.Directory
-@using Nop.Web.Areas.Admin.Models.Gifts
 @using Nop.Web.Areas.Admin.Models.ExternalAuthentication
 @using Nop.Web.Areas.Admin.Models.Forums
 @using Nop.Web.Areas.Admin.Models.Home
@@ -60,4 +60,4 @@
 @using Nop.Web.Framework.Security.Honeypot
 @using Nop.Web.Framework.Themes
 @using Nop.Web.Framework.UI
-@using Nop.Plugin.Misc.CustomProduct.Domain;
+@using Nop.Plugin.Misc.GiftProvider.Areas.Admin.Models.Gifts

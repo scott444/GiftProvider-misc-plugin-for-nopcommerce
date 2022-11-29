@@ -1,4 +1,4 @@
-﻿@model DiscountModel
+﻿@model GiftModel
 
 <script src="~/lib_npm/jsrender/jsrender.min.js" asp-location="Head"></script>
 <div class="card-body">
@@ -6,12 +6,12 @@
         @if (Model.Id > 0)
         {
             <p>
-                @T("Admin.Promotions.Discounts.Requirements.Description")
+                @T("Admin.Promotions.Gifts.Requirements.Description")
             </p>
 
             <script>
             $(document).ready(function() {
-                $("#@Html.IdFor(model => model.AddDiscountRequirement)").change(loadNewRequirementBox);
+                $("#@Html.IdFor(model => model.AddGiftRequirement)").change(loadNewRequirementBox);
 
                 //load add requirement box
                 loadNewRequirementBox();
@@ -20,7 +20,7 @@
                 loadRequirements();
 
                 //adding requirement event
-                $("#discountRequirementContainer").bind('nopnewdiscountruleadded', function(event, newRequirementId) {
+                $("#giftRequirementContainer").bind('nopnewgiftruleadded', function(event, newRequirementId) {
                     var parentId = $("#@Html.IdFor(model => model.RequirementGroupId)").val();
                     loadRequirements(newRequirementId, parentId);
                 });
@@ -29,7 +29,7 @@
             //load HTML for adding requirement
             function loadNewRequirementBox() {
                 //load URL
-                var ruleSystemName = $("#@Html.IdFor(model => model.AddDiscountRequirement)").val();
+                var ruleSystemName = $("#@Html.IdFor(model => model.AddGiftRequirement)").val();
                 if (ruleSystemName) {
                     var groupsElement = $("#@Html.IdFor(model => model.RequirementGroupId)");
                     if (groupsElement.find('option').length > 1) {
@@ -48,10 +48,10 @@
                         $("#pnlGroupName").hideElement();
                         $.ajax({
                             cache: false,
-                            url: "@(Url.Action("GetDiscountRequirementConfigurationUrl", "Discount"))",
+                            url: "@(Url.Action("GetGiftRequirementConfigurationUrl", "Gift"))",
                             data: {
                                 "systemName": ruleSystemName,
-                                "discountId": @Model.Id 
+                                "giftId": @Model.Id 
                             },
                             success: function (data, textStatus, jqXHR) {
                                 loadRequirementIntoBox(data.url, '#addrequirementplaceholder');
@@ -84,10 +84,10 @@
                 });
             };
 
-            function loadRequirements(discountRequirementId, parentId, interactionTypeId, deleteRequirement) {
+            function loadRequirements(giftRequirementId, parentId, interactionTypeId, deleteRequirement) {
                 var postData = {
-                    discountId: @Model.Id,
-                    discountRequirementId: (typeof discountRequirementId === 'undefined' ? 0 : discountRequirementId),
+                    giftId: @Model.Id,
+                    giftRequirementId: (typeof giftRequirementId === 'undefined' ? 0 : giftRequirementId),
                     parentId: (typeof parentId === 'undefined' ? null : parentId),
                     interactionTypeId: (typeof interactionTypeId === 'undefined' ? null : interactionTypeId),
                     deleteRequirement: (typeof deleteRequirement === 'undefined' ? false : deleteRequirement)
@@ -97,11 +97,11 @@
                 $.ajax({
                     cache: false,
                     type: "POST",
-                    url: "@(Url.Action("GetDiscountRequirements", "Discount"))",
+                    url: "@(Url.Action("GetGiftRequirements", "Gift"))",
                     data: postData,
                     success: function (data, textStatus, jqXHR) {
                         //set requirements
-                        loadRequirementBoxes(data.Requirements, "#discountRequirementContainer", true);
+                        loadRequirementBoxes(data.Requirements, "#giftRequirementContainer", true);
 
                         //set available groups
                         var groupsElement = $("#@Html.IdFor(model => model.RequirementGroupId)");
@@ -109,7 +109,7 @@
                         $.each(data.AvailableGroups, function (id, option) {
                             groupsElement.append($('<option></option>').val(option.Value).html(option.Text));
                         });
-                        var ruleSystemName = $("#@Html.IdFor(model => model.AddDiscountRequirement)").val();
+                        var ruleSystemName = $("#@Html.IdFor(model => model.AddGiftRequirement)").val();
                         if (ruleSystemName && groupsElement.find('option').length > 1) {
                             $("#pnlGroup").showElement();
                         }
@@ -118,7 +118,7 @@
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                        $("#getDiscountRequirementsAlert").click();
+                        $("#getGiftRequirementsAlert").click();
                     }
                 });
             };
@@ -128,14 +128,14 @@
                 if (requirements.length > 0 || hideEmptyString)
                     $(placeholder).html('');
                 else
-                    $(placeholder).html('@T("Admin.Promotions.Discounts.Requirements.GroupIsEmpty")');
+                    $(placeholder).html('@T("Admin.Promotions.Gifts.Requirements.GroupIsEmpty")');
                                 
                 $(placeholder).append(
-                    $("#discountRequirementTemplate").render(requirements)
+                    $("#giftRequirementTemplate").render(requirements)
                 );
 
                 for (var i = 0; i < requirements.length; i++) {
-                    var placeholderName = '#editrequirementplaceholder' + requirements[i].DiscountRequirementId;
+                    var placeholderName = '#editrequirementplaceholder' + requirements[i].GiftRequirementId;
                     $(placeholderName).html('loading...');
                     if (requirements[i].IsGroup) {
                         loadRequirementBoxes(requirements[i].ChildRequirements, placeholderName, false);
@@ -149,7 +149,7 @@
             //add new group
             function addNewGroup() {
                 var postData = {
-                    discountId: @Model.Id,
+                    giftId: @Model.Id,
                     name: $("#@Html.IdFor(model => model.GroupName)").val(),
                 };
 
@@ -158,9 +158,9 @@
                     cache: false,
                     type: "POST",
                     data: postData,
-                    url: "@(Url.Action("AddNewGroup", "Discount"))",
+                    url: "@(Url.Action("AddNewGroup", "Gift"))",
                     success: function (data, textStatus, jqXHR) {
-                        $("#discountRequirementContainer").trigger('nopnewdiscountruleadded', [data.NewRequirementId]);
+                        $("#giftRequirementContainer").trigger('nopnewgiftruleadded', [data.NewRequirementId]);
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         $("#failedToSave").click();
@@ -169,33 +169,33 @@
             };
 
             //delete requirement rule
-            function deleteRequirement(discountRequirementId) {
-                loadRequirements(discountRequirementId, null, null, true);
+            function deleteRequirement(giftRequirementId) {
+                loadRequirements(giftRequirementId, null, null, true);
             };
 
             //change interaction type
-            function changeInteraction(discountRequirementId, parentId, typeId) {
-                loadRequirements(discountRequirementId, parentId, typeId);
+            function changeInteraction(giftRequirementId, parentId, typeId) {
+                loadRequirements(giftRequirementId, parentId, typeId);
             };
             </script>
 
             <!-- Template container -->
-            <div id="discountRequirementContainer"></div>
+            <div id="giftRequirementContainer"></div>
 
-            <!-- Discount requirement template -->
-            <script id="discountRequirementTemplate" type="text/x-jsrender">
-                <div class="requirement-container {{if IsGroup}}requirement-group{{/if}}" id="editrequirement{{>DiscountRequirementId}}">
+            <!-- Gift requirement template -->
+            <script id="giftRequirementTemplate" type="text/x-jsrender">
+                <div class="requirement-container {{if IsGroup}}requirement-group{{/if}}" id="editrequirement{{>GiftRequirementId}}">
                     <div class="requirement-heading clearfix">
                         {{if IsGroup}}
                         <span class="float-left margin-r-5">
-                            @T("Admin.Promotions.Discounts.Requirements.RequirementGroup.Title")
+                            @T("Admin.Promotions.Gifts.Requirements.RequirementGroup.Title")
                             <i>{{:RuleName}}</i>
                         </span>
                         <div class="interaction-type float-left clearfix">
-                            <span class="float-left margin-r-10">@T("Admin.Promotions.Discounts.Requirements.InteractionTypeInGroup")</span>
-                            <select class="form-control input-sm float-left" id="interactiontype{{>DiscountRequirementId}}" 
-                                    name="interactiontype{{>DiscountRequirementId}}" 
-                                    onchange="changeInteraction({{> DiscountRequirementId}}, {{if ParentId}} {{>ParentId}} {{else}} null {{/if}}, this.value)">
+                            <span class="float-left margin-r-10">@T("Admin.Promotions.Gifts.Requirements.InteractionTypeInGroup")</span>
+                            <select class="form-control input-sm float-left" id="interactiontype{{>GiftRequirementId}}" 
+                                    name="interactiontype{{>GiftRequirementId}}" 
+                                    onchange="changeInteraction({{> GiftRequirementId}}, {{if ParentId}} {{>ParentId}} {{else}} null {{/if}}, this.value)">
                                 {{for AvailableInteractionTypes}}
                                     {{if Selected}}
                                         <option value="{{>Value}}" selected>{{>Text}}</option>
@@ -207,23 +207,23 @@
                         </div>
                         {{else}}
                         <div class="float-left">
-                            @T("Admin.Promotions.Discounts.Requirements.Requirement.Title")
+                            @T("Admin.Promotions.Gifts.Requirements.Requirement.Title")
                             <i>{{:RuleName}}</i>
                         </div>
                         {{/if}}
                         {{if ParentId}}
-                        <button type="button" class="btn btn-link" id="deleterequirement{{>DiscountRequirementId}}" onclick="deleteRequirement({{>DiscountRequirementId}})">
+                        <button type="button" class="btn btn-link" id="deleterequirement{{>GiftRequirementId}}" onclick="deleteRequirement({{>GiftRequirementId}})">
                             <i class="far fa-trash-alt"></i>
                             {{if IsGroup}}
-                                @T("Admin.Promotions.Discounts.Requirements.RemoveGroup")
+                                @T("Admin.Promotions.Gifts.Requirements.RemoveGroup")
                             {{else}}
-                                @T("Admin.Promotions.Discounts.Requirements.RemoveRequirement")
+                                @T("Admin.Promotions.Gifts.Requirements.RemoveRequirement")
                             {{/if}}
                         </button>
                         {{/if}}
                     </div>
                     <div class="requirement-body">
-                        <div id="editrequirementplaceholder{{>DiscountRequirementId}}"></div>
+                        <div id="editrequirementplaceholder{{>GiftRequirementId}}"></div>
                     </div>
                 </div>
                 {{if !IsLastInGroup}}                
@@ -235,16 +235,16 @@
 
             <div class="card card-default card-add-requirement">
                 <div class="card-header">
-                    @T("Admin.Promotions.Discounts.Requirements.AddNew")
+                    @T("Admin.Promotions.Gifts.Requirements.AddNew")
                 </div>
                 <div class="card-body">
                     <div class="form-group row">
                         <div class="col-md-3">
-                            <nop-label asp-for="AddDiscountRequirement" />
+                            <nop-label asp-for="AddGiftRequirement" />
                         </div>
                         <div class="col-md-9">
-                            <nop-select asp-for="AddDiscountRequirement" asp-items="Model.AvailableDiscountRequirementRules" />
-                            <span asp-validation-for="AddDiscountRequirement"></span>
+                            <nop-select asp-for="AddGiftRequirement" asp-items="Model.AvailableGiftRequirementRules" />
+                            <span asp-validation-for="AddGiftRequirement"></span>
                         </div>
                     </div>
                     <div class="form-group row d-none" id="pnlGroup">
@@ -278,11 +278,11 @@
         {
             <div class="card card-default">
                 <div class="card-body">
-                    @T("Admin.Promotions.Discounts.Requirements.SaveBeforeEdit")
+                    @T("Admin.Promotions.Gifts.Requirements.SaveBeforeEdit")
                 </div>
             </div>
         }
     </div>
-    <nop-alert asp-alert-id="failedToSave" asp-alert-message="@T("Admin.Promotions.Discounts.Requirements.Alert.FailedToSave")" />
-    <nop-alert asp-alert-id="getDiscountRequirementsAlert" asp-alert-message="@T("Admin.Promotions.Discounts.Requirements.Alert.FailedGetDiscountRequirements")" />
+    <nop-alert asp-alert-id="failedToSave" asp-alert-message="@T("Admin.Promotions.Gifts.Requirements.Alert.FailedToSave")" />
+    <nop-alert asp-alert-id="getGiftRequirementsAlert" asp-alert-message="@T("Admin.Promotions.Gifts.Requirements.Alert.FailedGetGiftRequirements")" />
 </div>

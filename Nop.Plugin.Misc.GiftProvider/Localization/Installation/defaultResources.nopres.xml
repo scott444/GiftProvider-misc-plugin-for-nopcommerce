@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Language Name="English">
+	<LocaleResource Name = "Admin.Promotions.Gifts">
+		<Value>Gifts</Value>
+	</LocaleResource>
+	<LocaleResource Name="Admin.Promotions.Gifts.Added">
+		<Value>The new gift has been added successfully.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.AddNew">
+		<Value>Add a new gift</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.AppliedToCategories">
+		<Value>Applied to categories</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.AppliedToCategories.AddNew">
+		<Value>Add a new category</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.AppliedToCategories.Category">
+		<Value>Category</Value>
+	</LocaleResource>
+	<LocaleResource Name="Admin.Promotions.Gifts.AppliedToCategories.SaveBeforeEdit">
+		<Value>You need to save the gift before you can add categories for this gift page.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.AppliedToManufacturers">
+		<Value>Applied to manufacturers</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.AppliedToManufacturers.AddNew">
+		<Value>Add a new manufacturer</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.AppliedToManufacturers.Manufacturer">
+		<Value>Manufacturer</Value>
+	</LocaleResource>
+	<LocaleResource Name="Admin.Promotions.Gifts.AppliedToManufacturers.SaveBeforeEdit">
+		<Value>You need to save the gift before you can add manufacturers for this gift page.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.AppliedToProducts">
+		<Value>Applied to products</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.AppliedToProducts.AddNew">
+		<Value>Add a new product</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.AppliedToProducts.Product">
+		<Value>Product</Value>
+	</LocaleResource>
+	<LocaleResource Name="Admin.Promotions.Gifts.AppliedToProducts.SaveBeforeEdit">
+		<Value>You need to save the gift before you can add products for this gift page.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.BackToList">
+		<Value>back to gift list</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Deleted">
+		<Value>The gift has been deleted successfully.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.EditGiftDetails">
+		<Value>Edit gift details</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.AdminComment">
+		<Value>Admin comment</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.AdminComment.Hint">
+		<Value>This comment is for internal use only, not visible for customers.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.AppliedToSubCategories">
+		<Value>Apply to subcategories</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.AppliedToSubCategories.Hint">
+		<Value>Check to apply gift to subcategories of the selected parent.But please note that it can affect performance if you have a lot of nested subcategories.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.CouponCode">
+		<Value>Coupon code</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.CouponCode.Hint">
+		<Value>The gift coupon code.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.Gift">
+		<Value>Gift</Value>
+	</LocaleResource>
+	<LocaleResource Name= "Admin.Promotions.Gifts.Fields.GiftAmount">
+		<Value>Gift amount</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.GiftAmount.Hint">
+		<Value>The gift amount to apply to the order/SKUs.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.GiftLimitation">
+		<Value>Gift limitation</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.GiftLimitation.Hint">
+		<Value>Choose the limitation of gift. This parameter will not be taken into account for recurring products/orders.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.GiftPercentage">
+		<Value>Gift percentage</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.GiftPercentage.Hint">
+		<Value>The percentage gift to apply to order/SKUs.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.GiftType">
+		<Value>Gift type</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.GiftType.Hint">
+		<Value>The type of gift.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.GiftUrl">
+		<Value>URL with coupon code</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.GiftUrl.Hint">
+		<Value>The sample link that includes a gift coupon code, so that customers do not have to input the coupon code at checkout.You can also use this query parameter with any other link to your store, for example link to certain product or category.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.EndDate">
+		<Value>End date</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.EndDate.Hint">
+		<Value>The end of the gift period in Coordinated Universal Time (UTC).</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.IsCumulative">
+		<Value>Cumulative with other gifts</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.IsCumulative.Hint">
+		<Value>If checked, this gift can be used with other ones simultaneously. Please note that this feature works only for gifts with the same gift type. Right now, gifts with distinct types are already cumulative.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.LimitationTimes">
+		<Value>N times</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.LimitationTimes.Hint">
+		<Value>Enter the number of times that the gift is limited to.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.LimitationTimes.Times">
+		<Value>times</Value>
+	</LocaleResource>
+	<LocaleResource Name= "Admin.Promotions.Gifts.Fields.MaximumGiftAmount">
+		<Value>Maximum gift amount</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.MaximumGiftAmount.Hint">
+		<Value>Maximum allowed gift amount.Leave empty to allow any gift amount.If you're using "Assigned to products" gift type, then it's applied to each product separately.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.MaximumGiftedQuantity">
+		<Value>Maximum gifted quantity</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.MaximumGiftedQuantity.Hint">
+		<Value>Maximum product quantity which could be gifted. For example, you can have two products (the same) in the cart but only one of them will be gifted. It can be used for scenarios like "buy 2 get 1 free". Leave empty if any quantity could be gifted.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.Name">
+		<Value>Name</Value>
+	</LocaleResource>
+	<LocaleResource Name= "Admin.Promotions.Gifts.Fields.Name.Hint">
+		<Value>The name of the gift.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.Name.Required">
+		<Value>Please provide a name.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.RequiresCouponCode">
+		<Value>Requires coupon code</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.RequiresCouponCode.Hint">
+		<Value>If checked, a customer must supply a valid coupon code for the gift to be applied.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.StartDate">
+		<Value>Start date</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.StartDate.Hint">
+		<Value>The start of the gift period in Coordinated Universal Time (UTC).</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.TimesUsed">
+		<Value>Times used</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.UsePercentage">
+		<Value>Use percentage</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Fields.UsePercentage.Hint">
+		<Value>Determines whether to apply a percentage gift to the order/SKUs.If not enabled, a set value is gifted.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.History">
+		<Value>Usage history</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.History.CreatedOn">
+		<Value>Used</Value>
+	</LocaleResource>
+	<LocaleResource Name= "Admin.Promotions.Gifts.History.CustomOrderNumber">
+		<Value>Order #</Value>
+	</LocaleResource>
+	<LocaleResource Name= "Admin.Promotions.Gifts.History.OrderTotal">
+		<Value>Order total</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.IgnoreGifts.Warning">
+		<Value>In order to use this functionality, you have to disable the following setting: Configuration &gt; Catalog settings &gt; Ignore gifts(sitewide).</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Info">
+		<Value>Gift info</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.List.SearchGiftCouponCode">
+		<Value>Coupon code</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.List.SearchGiftCouponCode.Hint">
+		<Value>Search by gift coupon code.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.List.SearchGiftName">
+		<Value>Gift name</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.List.SearchGiftName.Hint">
+		<Value>Search by gift name.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.List.SearchGiftType">
+		<Value>Gift type</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.List.SearchGiftType.Hint">
+		<Value>Search by gift type.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.List.SearchEndDate">
+		<Value>End date</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.List.SearchEndDate.Hint">
+		<Value>The end date for the search.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.List.SearchStartDate">
+		<Value>Start date</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.List.SearchStartDate.Hint">
+		<Value>The start date for the search.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements">
+		<Value>Requirements</Value>
+	</LocaleResource>
+	<LocaleResource Name= "Admin.Promotions.Gifts.Requirements.AddNew">
+		<Value>Add a new gift requirement</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.Alert.FailedGetGiftRequirements">
+		<Value>Failed to load requirements info. Please refresh the page.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.Alert.FailedToSave">
+		<Value>Failed to save requirement</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.DefaultRequirementGroup">
+		<Value>Default requirement group</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.Description">
+		<Value><![CDATA[Set up requirements to a created gift if you want to limit it to certain user categories depending on a customer role, the amount spent, etc.You can use single requirement type, or group several types and apply them simultaneously.<br> Requirement group is a useful feature for creating gift requirement templates.You can create a requirement group just once and then use it every time you want this limitation to be applied.You can include one requirement group into another one if needed.]]></Value>
+	</LocaleResource>
+	<LocaleResource Name= "Admin.Promotions.Gifts.Requirements.GiftRequirementType">
+		<Value>Gift requirement type</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.GiftRequirementType.AddGroup">
+		<Value>Add requirement group</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.GiftRequirementType.Hint">
+		<Value>You can choose one of the following requirement types, or add a requirement group to use several requirement types simultaneously.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.GiftRequirementType.Select">
+		<Value>Select requirement type</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.FailedToSave">
+		<Value>Failed to save gift requirements.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.GroupIsEmpty">
+		<Value>The group is empty</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.GroupName">
+		<Value>Group name</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.GroupName.Hint">
+		<Value>Specify name of the requirement group (e.g. "Permitted customer roles").</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.InteractionTypeInGroup">
+		<Value>Interaction type in this group is</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.RemoveGroup">
+		<Value>Remove group</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.RemoveRequirement">
+		<Value>Remove requirement</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.Requirement.Title">
+		<Value>Requirement</Value>
+	</LocaleResource>
+	<LocaleResource Name= "Admin.Promotions.Gifts.Requirements.RequirementGroup">
+		<Value>Add to group</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.RequirementGroup.Hint">
+		<Value>Choose the group you want the requirement group you’re creating to be assigned to</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.RequirementGroup.Title">
+		<Value>Group</Value>
+	</LocaleResource>
+	<LocaleResource Name= "Admin.Promotions.Gifts.Requirements.SaveBeforeEdit">
+		<Value>You need to save the gift before you can add requirements for this gift page.</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Requirements.Saved">
+		<Value>Gift requirement saved</Value>
+	</LocaleResource>
+	<LocaleResource Name = "Admin.Promotions.Gifts.Updated">
+		<Value>The gift has been updated successfully.</Value>
+	</LocaleResource>
+</Language>

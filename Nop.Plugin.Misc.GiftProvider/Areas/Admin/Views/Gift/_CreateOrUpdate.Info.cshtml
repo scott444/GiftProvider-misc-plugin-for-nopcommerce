@@ -1,52 +1,52 @@
-﻿@model DiscountModel
-@using Nop.Core.Domain.Discounts
+﻿@model GiftModel
+@using Nop.Plugin.Misc.GiftProvider.Domain;
 @using Nop.Services
 
 <script>
     $(document).ready(function() {
-        $("#@Html.IdFor(model => model.DiscountTypeId)").change(toggleDiscountType);
+        $("#@Html.IdFor(model => model.GiftTypeId)").change(toggleGiftType);
         $("#@Html.IdFor(model => model.UsePercentage)").click(toggleUsePercentage);
         $("#@Html.IdFor(model => model.RequiresCouponCode)").click(toggleRequiresCouponCode);
-        $("#@Html.IdFor(model => model.DiscountLimitationId)").change(toggleLimitation);
+        $("#@Html.IdFor(model => model.GiftLimitationId)").change(toggleLimitation);
 
-        toggleDiscountType();
+        toggleGiftType();
         toggleLimitation();
         toggleUsePercentage();
         toggleRequiresCouponCode();
     });
 
-    function toggleDiscountType() {
-        var selectedDiscountTypeId = $("#@Html.IdFor(model => model.DiscountTypeId)").val();
-        if (selectedDiscountTypeId == @(((int) DiscountType.AssignedToCategories).ToString())) {
-            $('[data-card-name=discount-applied-to-categories]').showElement();
-            $('[data-card-name=discount-applied-to-manufacturers]').hideElement();
-            $('[data-card-name=discount-applied-to-products]').hideElement();
-            $('#pnlMaximumDiscountedQuantity').showElement();
+    function toggleGiftType() {
+        var selectedGiftTypeId = $("#@Html.IdFor(model => model.GiftTypeId)").val();
+        if (selectedGiftTypeId == @(((int) GiftType.AssignedToCategories).ToString())) {
+            $('[data-card-name=gift-applied-to-categories]').showElement();
+            $('[data-card-name=gift-applied-to-manufacturers]').hideElement();
+            $('[data-card-name=gift-applied-to-products]').hideElement();
+            $('#pnlMaximumGiftedQuantity').showElement();
             $('#pnlAppliedToSubCategories').showElement();
-    } else if (selectedDiscountTypeId == @(((int) DiscountType.AssignedToManufacturers).ToString())) {
-            $('[data-card-name=discount-applied-to-categories]').hideElement();
-            $('[data-card-name=discount-applied-to-manufacturers]').showElement();
-            $('[data-card-name=discount-applied-to-products]').hideElement();
-            $('#pnlMaximumDiscountedQuantity').showElement();
+    } else if (selectedGiftTypeId == @(((int) GiftType.AssignedToManufacturers).ToString())) {
+            $('[data-card-name=gift-applied-to-categories]').hideElement();
+            $('[data-card-name=gift-applied-to-manufacturers]').showElement();
+            $('[data-card-name=gift-applied-to-products]').hideElement();
+            $('#pnlMaximumGiftedQuantity').showElement();
             $('#pnlAppliedToSubCategories').hideElement();
-    } else if (selectedDiscountTypeId == @(((int) DiscountType.AssignedToSkus).ToString())) {
-            $('[data-card-name=discount-applied-to-categories]').hideElement();
-            $('[data-card-name=discount-applied-to-manufacturers]').hideElement();
-            $('[data-card-name=discount-applied-to-products]').showElement();
-            $('#pnlMaximumDiscountedQuantity').showElement();
+    } else if (selectedGiftTypeId == @(((int) GiftType.AssignedToSkus).ToString())) {
+            $('[data-card-name=gift-applied-to-categories]').hideElement();
+            $('[data-card-name=gift-applied-to-manufacturers]').hideElement();
+            $('[data-card-name=gift-applied-to-products]').showElement();
+            $('#pnlMaximumGiftedQuantity').showElement();
             $('#pnlAppliedToSubCategories').hideElement();
     } else {
-            $('[data-card-name=discount-applied-to-categories]').hideElement();
-            $('[data-card-name=discount-applied-to-manufacturers]').hideElement();
-            $('[data-card-name=discount-applied-to-products]').hideElement();
-            $('#pnlMaximumDiscountedQuantity').hideElement();
+            $('[data-card-name=gift-applied-to-categories]').hideElement();
+            $('[data-card-name=gift-applied-to-manufacturers]').hideElement();
+            $('[data-card-name=gift-applied-to-products]').hideElement();
+            $('#pnlMaximumGiftedQuantity').hideElement();
             $('#pnlAppliedToSubCategories').hideElement();
     }
     }
 
     function toggleLimitation() {
-        var selectedDiscountLimitationId = $("#@Html.IdFor(model => model.DiscountLimitationId)").val();
-        if (selectedDiscountLimitationId == @(((int) DiscountLimitationType.NTimesOnly).ToString()) || selectedDiscountLimitationId == @(((int) DiscountLimitationType.NTimesPerCustomer).ToString())) {
+        var selectedGiftLimitationId = $("#@Html.IdFor(model => model.GiftLimitationId)").val();
+        if (selectedGiftLimitationId == @(((int) GiftLimitationType.NTimesOnly).ToString()) || selectedGiftLimitationId == @(((int) GiftLimitationType.NTimesPerCustomer).ToString())) {
             //'N Times Only' or 'N Times Per Customer'
             $('#pnlLimitationTimes').showElement();
     } else {
@@ -56,30 +56,30 @@
 
     function toggleUsePercentage() {
         if ($('#@Html.IdFor(model => model.UsePercentage)').is(':checked')) {
-            $('#pnlDiscountPercentage').showElement();
-            $('#pnlDiscountAmount').hideElement();
-            $('#pnlMaximumDiscountAmount').showElement();
+            $('#pnlGiftPercentage').showElement();
+            $('#pnlGiftAmount').hideElement();
+            $('#pnlMaximumGiftAmount').showElement();
         } else {
-            $('#pnlDiscountPercentage').hideElement();
-            $('#pnlDiscountAmount').showElement();
-            $('#pnlMaximumDiscountAmount').hideElement();
+            $('#pnlGiftPercentage').hideElement();
+            $('#pnlGiftAmount').showElement();
+            $('#pnlMaximumGiftAmount').hideElement();
         }
     }
 
     function toggleRequiresCouponCode() {
         if ($('#@Html.IdFor(model => model.RequiresCouponCode)').is(':checked')) {
             $('#pnlCouponCode').showElement();
-            @if (!string.IsNullOrEmpty(Model.DiscountUrl))
+            @if (!string.IsNullOrEmpty(Model.GiftUrl))
             {
-                <text>$('#pnlDiscountUrl').showElement();</text>
+                <text>$('#pnlGiftUrl').showElement();</text>
             }
             else
             {
-                <text>$('#pnlDiscountUrl').hideElement();</text>
+                <text>$('#pnlGiftUrl').hideElement();</text>
             }
         } else {
             $('#pnlCouponCode').hideElement();
-            $('#pnlDiscountUrl').hideElement();
+            $('#pnlGiftUrl').hideElement();
         }
     }
 </script>
@@ -96,11 +96,11 @@
     </div>
     <div class="form-group row">
         <div class="col-md-3">
-            <nop-label asp-for="DiscountTypeId" />
+            <nop-label asp-for="GiftTypeId" />
         </div>
         <div class="col-md-9">
-            <nop-select asp-for="DiscountTypeId" asp-items="@await ((DiscountType) Model.DiscountTypeId).ToSelectListAsync()" />
-            <span asp-validation-for="DiscountTypeId"></span>
+            <nop-select asp-for="GiftTypeId" asp-items="@await ((GiftType) Model.GiftTypeId).ToSelectListAsync()" />
+            <span asp-validation-for="GiftTypeId"></span>
         </div>
     </div>
     <div class="form-group row" id="pnlAppliedToSubCategories">
@@ -122,32 +122,32 @@
         </div>
     </div>
     <nop-nested-setting asp-for="UsePercentage" disable-auto-generation="true">
-        <div class="form-group row" id="pnlDiscountPercentage">
+        <div class="form-group row" id="pnlGiftPercentage">
             <div class="col-md-3">
-                <nop-label asp-for="DiscountPercentage" />
+                <nop-label asp-for="GiftPercentage" />
             </div>
             <div class="col-md-9">
-                <nop-editor asp-for="DiscountPercentage" />
-                <span asp-validation-for="DiscountPercentage"></span>
+                <nop-editor asp-for="GiftPercentage" />
+                <span asp-validation-for="GiftPercentage"></span>
             </div>
         </div>
-        <div class="form-group advanced-setting row" id="pnlMaximumDiscountAmount">
+        <div class="form-group advanced-setting row" id="pnlMaximumGiftAmount">
             <div class="col-md-3">
-                <nop-label asp-for="MaximumDiscountAmount" />
+                <nop-label asp-for="MaximumGiftAmount" />
             </div>
             <div class="col-md-9">
-                <nop-editor asp-for="MaximumDiscountAmount" asp-postfix="@Model.PrimaryStoreCurrencyCode" />
-                <span asp-validation-for="MaximumDiscountAmount"></span>
+                <nop-editor asp-for="MaximumGiftAmount" asp-postfix="@Model.PrimaryStoreCurrencyCode" />
+                <span asp-validation-for="MaximumGiftAmount"></span>
             </div>
         </div>
     </nop-nested-setting>
-    <div class="form-group row" id="pnlDiscountAmount">
+    <div class="form-group row" id="pnlGiftAmount">
         <div class="col-md-3">
-            <nop-label asp-for="DiscountAmount" />
+            <nop-label asp-for="GiftAmount" />
         </div>
         <div class="col-md-9">
-            <nop-editor asp-for="DiscountAmount" asp-postfix="@Model.PrimaryStoreCurrencyCode" />
-            <span asp-validation-for="DiscountAmount"></span>
+            <nop-editor asp-for="GiftAmount" asp-postfix="@Model.PrimaryStoreCurrencyCode" />
+            <span asp-validation-for="GiftAmount"></span>
         </div>
     </div>
     <div class="form-group row">
@@ -171,12 +171,12 @@
         </div>
     </nop-nested-setting>
     <nop-nested-setting asp-for="RequiresCouponCode" disable-auto-generation="true">
-        <div class="form-group row" id="pnlDiscountUrl">
+        <div class="form-group row" id="pnlGiftUrl">
             <div class="col-md-3">
-                <nop-label asp-for="DiscountUrl" />
+                <nop-label asp-for="GiftUrl" />
             </div>
             <div class="col-md-9">
-                <div class="form-text-row">@Model.DiscountUrl</div>
+                <div class="form-text-row">@Model.GiftUrl</div>
             </div>
         </div>
     </nop-nested-setting>
@@ -209,11 +209,11 @@
     </div>
     <div class="form-group advanced-setting row">
         <div class="col-md-3">
-            <nop-label asp-for="DiscountLimitationId" />
+            <nop-label asp-for="GiftLimitationId" />
         </div>
         <div class="col-md-9">
-            <nop-select asp-for="DiscountLimitationId" asp-items="@await (((DiscountLimitationType)Model.DiscountLimitationId).ToSelectListAsync())" />
-            <span asp-validation-for="DiscountLimitationId"></span>
+            <nop-select asp-for="GiftLimitationId" asp-items="@await (((GiftLimitationType)Model.GiftLimitationId).ToSelectListAsync())" />
+            <span asp-validation-for="GiftLimitationId"></span>
         </div>
     </div>
     <div class="form-group row" id="pnlLimitationTimes">
@@ -222,16 +222,16 @@
         </div>
         <div class="col-md-9">
             <nop-editor asp-for="LimitationTimes" />
-            <span asp-validation-for="LimitationTimes"></span> @T("Admin.Promotions.Discounts.Fields.LimitationTimes.Times")
+            <span asp-validation-for="LimitationTimes"></span> @T("Admin.Promotions.Gifts.Fields.LimitationTimes.Times")
         </div>
     </div>
-    <div class="form-group row" id="pnlMaximumDiscountedQuantity">
+    <div class="form-group row" id="pnlMaximumGiftedQuantity">
         <div class="col-md-3">
-            <nop-label asp-for="MaximumDiscountedQuantity" />
+            <nop-label asp-for="MaximumGiftedQuantity" />
         </div>
         <div class="col-md-9">
-            <nop-editor asp-for="MaximumDiscountedQuantity" />
-            <span asp-validation-for="MaximumDiscountedQuantity"></span>
+            <nop-editor asp-for="MaximumGiftedQuantity" />
+            <span asp-validation-for="MaximumGiftedQuantity"></span>
         </div>
     </div>
     <div class="form-group advanced-setting row">

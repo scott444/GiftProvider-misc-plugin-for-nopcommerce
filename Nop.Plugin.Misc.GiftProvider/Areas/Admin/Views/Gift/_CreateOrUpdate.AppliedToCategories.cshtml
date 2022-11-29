@@ -1,4 +1,4 @@
-@model DiscountModel
+@model GiftModel
 
 @if (Model.Id > 0)
 {
@@ -6,25 +6,25 @@
         @await Html.PartialAsync("Table", new DataTablesModel
         {
             Name = "categories-grid",
-            UrlRead = new DataUrl("CategoryList", "Discount", new RouteValueDictionary { [nameof(Model.DiscountCategorySearchModel.DiscountId)] = Model.DiscountCategorySearchModel.DiscountId }),
-            UrlDelete = new DataUrl("CategoryDelete", "Discount", new RouteValueDictionary { [nameof(Model.DiscountCategorySearchModel.DiscountId)] = Model.DiscountCategorySearchModel.DiscountId }),
-            BindColumnNameActionDelete = nameof(DiscountCategoryModel.CategoryId),
-            Length = Model.DiscountCategorySearchModel.PageSize,
-            LengthMenu = Model.DiscountCategorySearchModel.AvailablePageSizes,
+            UrlRead = new DataUrl("CategoryList", "Gift", new RouteValueDictionary { [nameof(Model.GiftCategorySearchModel.GiftId)] = Model.GiftCategorySearchModel.GiftId }),
+            UrlDelete = new DataUrl("CategoryDelete", "Gift", new RouteValueDictionary { [nameof(Model.GiftCategorySearchModel.GiftId)] = Model.GiftCategorySearchModel.GiftId }),
+            BindColumnNameActionDelete = nameof(GiftCategoryModel.CategoryId),
+            Length = Model.GiftCategorySearchModel.PageSize,
+            LengthMenu = Model.GiftCategorySearchModel.AvailablePageSizes,
             ColumnCollection = new List<ColumnProperty>
             {
-                new ColumnProperty(nameof(DiscountCategoryModel.CategoryName))
+                new ColumnProperty(nameof(GiftCategoryModel.CategoryName))
                 {
-                    Title = T("Admin.Promotions.Discounts.AppliedToCategories.Category").Text
+                    Title = T("Admin.Promotions.Gifts.AppliedToCategories.Category").Text
                 },
-                new ColumnProperty(nameof(DiscountCategoryModel.CategoryId))
+                new ColumnProperty(nameof(GiftCategoryModel.CategoryId))
                 {
                     Title = T("Admin.Common.View").Text,
                     Width = "150",
                     ClassName =  NopColumnClassDefaults.Button,
                     Render = new RenderButtonView(new DataUrl("~/Admin/Category/Edit/"))
                 },
-                new ColumnProperty(nameof(DiscountCategoryModel.CategoryId))
+                new ColumnProperty(nameof(GiftCategoryModel.CategoryId))
                 {
                     Title = T("Admin.Common.Delete").Text,
                     Width = "150",
@@ -35,8 +35,8 @@
         })
     </div>
     <div class="card-footer">
-        <button type="submit" id="btnAddNewCategory" onclick="javascript:OpenWindow('@(Url.Action("CategoryAddPopup", "Discount", new { discountId = Model.Id, btnId = "btnRefreshCategories", formId = "discount-form" }))', 800, 800, true); return false;" class="btn btn-primary">
-            @T("Admin.Promotions.Discounts.AppliedToCategories.AddNew")
+        <button type="submit" id="btnAddNewCategory" onclick="javascript:OpenWindow('@(Url.Action("CategoryAddPopup", "Gift", new { giftId = Model.Id, btnId = "btnRefreshCategories", formId = "gift-form" }))', 800, 800, true); return false;" class="btn btn-primary">
+            @T("Admin.Promotions.Gifts.AppliedToCategories.AddNew")
         </button>
         <button type="submit" id="btnRefreshCategories" style="display: none"></button>
         <script>
@@ -55,6 +55,6 @@
 else
 {
     <div class="card-body">
-        @T("Admin.Promotions.Discounts.AppliedToCategories.SaveBeforeEdit")
+        @T("Admin.Promotions.Gifts.AppliedToCategories.SaveBeforeEdit")
     </div>
 }

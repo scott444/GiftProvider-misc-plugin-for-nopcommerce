@@ -1,10 +1,10 @@
-﻿@model AddManufacturerToDiscountSearchModel
+﻿@model AddManufacturerToGiftSearchModel
 
 @{
     Layout = "_AdminPopupLayout";
 
     //page title
-    ViewBag.PageTitle = T("Admin.Promotions.Discounts.AppliedToManufacturers.AddNew").Text;
+    ViewBag.PageTitle = T("Admin.Promotions.Gifts.AppliedToManufacturers.AddNew").Text;
 }
 
 @if (ViewBag.RefreshPage == true)
@@ -17,13 +17,13 @@
 }
 else
 {
-    <form asp-controller="Discount" asp-action="ManufacturerAddPopup"
-          asp-route-discountId="@Context.Request.Query["discountId"]"
+    <form asp-controller="Gift" asp-action="ManufacturerAddPopup"
+          asp-route-giftId="@Context.Request.Query["giftId"]"
           asp-route-btnId="@Context.Request.Query["btnId"]"
           asp-route-formId="@Context.Request.Query["formId"]">
         <div class="content-header clearfix">
             <h1 class="float-left">
-                @T("Admin.Promotions.Discounts.AppliedToManufacturers.AddNew")
+                @T("Admin.Promotions.Gifts.AppliedToManufacturers.AddNew")
             </h1>
             <div class="float-right">
                 &nbsp;
@@ -64,7 +64,7 @@ else
                                     @await Html.PartialAsync("Table", new DataTablesModel
                                     {
                                         Name = "manufacturers-grid",
-                                        UrlRead = new DataUrl("ManufacturerAddPopupList", "Discount", null),
+                                        UrlRead = new DataUrl("ManufacturerAddPopupList", "Gift", null),
                                         SearchButtonId = "search-manufacturers",
                                         Length = Model.PageSize,
                                         LengthMenu = Model.AvailablePageSizes,
@@ -77,7 +77,7 @@ else
                                             new ColumnProperty(nameof(ManufacturerModel.Id))
                                             {
                                                 IsMasterCheckBox = true,
-                                                Render = new RenderCheckBox(nameof(AddManufacturerToDiscountModel.SelectedManufacturerIds)),
+                                                Render = new RenderCheckBox(nameof(AddManufacturerToGiftModel.SelectedManufacturerIds)),
                                                 ClassName =  NopColumnClassDefaults.CenterAll,
                                                 Width = "50"
                                             },
